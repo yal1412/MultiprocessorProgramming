@@ -17,8 +17,9 @@ public class ConcurrentCounter implements Counter{
             count++;
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            semaphore.release();
         }
-        semaphore.release();
     }
 
     @Override
@@ -26,3 +27,4 @@ public class ConcurrentCounter implements Counter{
         return count;
     }
 }
+
