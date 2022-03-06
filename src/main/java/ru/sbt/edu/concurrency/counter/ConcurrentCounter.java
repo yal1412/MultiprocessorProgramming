@@ -15,10 +15,9 @@ public class ConcurrentCounter implements Counter{
         try {
             semaphore.acquire();
             count++;
+            semaphore.release();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } finally {
-            semaphore.release();
         }
     }
 
